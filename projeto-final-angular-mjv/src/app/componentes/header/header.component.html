@@ -1,0 +1,18 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand">Contratex</a>
+    <div *ngIf="funcionario$ |async as funcionario">
+      <div *ngIf="funcionario.matricula; else login">
+        <i class="fa fa-user-cicle mr-1"></i>
+        <a class="mr-1">{{ funcionario.matricula}}</a>
+        <a (click)="logout()">Sair</a>
+    </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="navbar-text">
+      <a [routerLink]="['']" >Login</a>
+    </span>
+  </ng-template>
+</header>

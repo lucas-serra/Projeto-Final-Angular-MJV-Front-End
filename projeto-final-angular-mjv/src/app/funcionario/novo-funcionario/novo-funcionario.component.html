@@ -1,0 +1,68 @@
+<h4 class="text-center">{{textCenter}}</h4>
+
+<form class="form" [formGroup]="novoFuncionarioForm" (submit)="cadastrar()">
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Nome Completo" formControlName="nome">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('nome')?.errors?.['required'] && novoFuncionarioForm.get('nome')?.touched"
+    mensagem="Nome Completo obrigatório"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Profissão" formControlName="profissao">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('profissao')?.errors?.['required'] && novoFuncionarioForm.get('profissao')?.touched"
+    mensagem="Profissão obrigatória"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" placeholder="Salário" formControlName="salario">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('salario')?.errors?.['required'] && novoFuncionarioForm.get('salario')?.touched"
+    mensagem="Salário obrigatório"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="CPF" formControlName="cpf">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('cpf')?.errors?.['required'] && novoFuncionarioForm.get('cpf')?.touched"
+    mensagem="CPF obrigatório"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" placeholder="Celular" formControlName="celular">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('celular')?.errors?.['required'] && novoFuncionarioForm.get('celular')?.touched"
+    mensagem="Celular obrigatório"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Matrícula" formControlName="matricula">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('matricula')?.errors?.['required'] && novoFuncionarioForm.get('matricula')?.touched"
+    mensagem="Matrícula obrigatória"></app-mensagem>
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('matricula')?.errors?.['funcionarioExistente']"
+    mensagem="Funcionário já existe"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('email')?.errors?.['required'] && novoFuncionarioForm.get('email')?.touched"
+    mensagem="Email obrigatório"></app-mensagem>
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('email')?.errors?.['email'] && novoFuncionarioForm.get('email')?.touched"
+    mensagem="E-mail no formato incorreto"></app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
+    <app-mensagem
+    *ngIf="novoFuncionarioForm.get('senha')?.errors?.['required'] && novoFuncionarioForm.get('senha')?.touched"
+    mensagem="Senha obrigatória"></app-mensagem>
+  </div>
+
+  <button class="btn btn-primary btn-block">Cadastrar</button>
+</form>

@@ -12,8 +12,8 @@ export const db = new Client({
 
 const FUNCIONARIO_SCHEMA = `
 CREATE TABLE IF NOT EXISTS funcionario (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(30) NOT NULL UNIQUE,
+    id SERIAL PRIMARY KEY UNIQUE,
+    nome VARCHAR(30) NOT NULL,
     profissao VARCHAR(100) NOT NULL,
     salario NUMERIC NOT NULL,
     cpf VARCHAR(15) NOT NULL,
@@ -36,7 +36,7 @@ INSERT INTO funcionario(
     matricula,
     email,
     senha
-) VALUES ('alvaro luis', 'dev java', 5000.00, '11122233345',99999999,1234,'alvaro@email.com.br', '12345678')
+) VALUES ('alvaro luis', 'dev java', 5000.00, '11122233345',99999999,1234,'alvaro@email.com.br', '12345678') 
 `;
 
 async function rodaQueries() {
@@ -52,13 +52,7 @@ async function rodaQueries() {
   }catch(error){
     console.log(error);
   }
-  // await db.query(FUNCIONARIO_SCHEMA);
-  // await db.query(INSERT_DEFAULT_FUNCIONARIO_1);
 
-  // await db.query("SELECT * FROM funcionario", (err, funcionario) => {
-  //   console.log('funcionario');
-  //   console.log(funcionario);
-  // });
 }
 
 rodaQueries();

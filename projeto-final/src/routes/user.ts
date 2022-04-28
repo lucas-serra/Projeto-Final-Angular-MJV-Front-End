@@ -1,14 +1,14 @@
-import * as userAPI from '../api';
 import { wrapAsync } from '../infra';
+import { login, register, checkUserMatriculaTaken } from '../api/user';
 
-export const userRoutes = app => {
+export const userRoutes = (app:any) => {
 
   app.route('/user/login')
-    .post(wrapAsync(userAPI.login));
+    .post(wrapAsync(login));
 
   app.route('/user/signup')
-    .post(wrapAsync(userAPI.register));
+    .post(wrapAsync(register));
 
   app.route('/user/exists/:matricula')
-    .get(wrapAsync(userAPI.checkUserMatriculaTaken));
+    .get(wrapAsync(checkUserMatriculaTaken));
 };

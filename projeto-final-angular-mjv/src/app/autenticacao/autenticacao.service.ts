@@ -9,10 +9,10 @@ export class AutenticacaoService {
 
   constructor(private httpClient: HttpClient, private funcionarioService: FuncionarioService) { }
 
-  autenticar(email: string , senha: string): Observable<HttpResponse<any>>{
+  autenticar(userEmail: string , password: string): Observable<HttpResponse<any>>{
     return this.httpClient.post('http://localhost:3000/user/login',{
-      userEmail: email,
-      password: senha
+      email: userEmail,
+      senha: password
     },
     {observe:'response'}
     ).pipe(

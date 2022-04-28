@@ -9,7 +9,7 @@ export default async (req, res, next) => {
     try {
       const decoded = await verifyPromise(token, req.app.get('secret'));
       console.log(`Valid token received: ${token}`);
-      req.user = decoded;
+      req.funcionario = decoded;
       next();
     } catch (err) {
       console.log(err);

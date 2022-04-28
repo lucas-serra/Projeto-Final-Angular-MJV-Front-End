@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS funcionario (
     celular INTEGER NOT NULL,
     matricula INTEGER NOT NULL,
     email VARCHAR(255) NOT NULL,
-    senha VARCAHR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
 
 )
 `;
@@ -36,18 +36,29 @@ INSERT INTO funcionario(
     matricula,
     email,
     senha
-) SELECT 'alvaro luis', 'dev java', 5000.00, '11122233345',99999999,1234,'alvaro@email.com.br', '12345678' WHERE NOT EXISTS (SELECT * FROM user WHERE name = 'alvaro')
+) VALUES ('alvaro luis', 'dev java', 5000.00, '11122233345',99999999,1234,'alvaro@email.com.br', '12345678')
 `;
 
 async function rodaQueries() {
   await db.connect();
-  await db.query(FUNCIONARIO_SCHEMA);
-  await db.query(INSERT_DEFAULT_FUNCIONARIO_1);
+  try{
+    await db.query(FUNCIONARIO_SCHEMA);
+    await db.query(INSERT_DEFAULT_FUNCIONARIO_1);
 
-  await db.query("SELECT * FROM user", (err, funcionario) => {
-    console.log('Users');
-    console.log(funcionario);
-  });
+    await db.query("SELECT * FROM funcionario", (err, funcionario) => {
+        console.log('funcionario');
+        console.log(funcionario);
+      });
+  }catch(error){
+    console.log(error);
+  }
+  // await db.query(FUNCIONARIO_SCHEMA);
+  // await db.query(INSERT_DEFAULT_FUNCIONARIO_1);
+
+  // await db.query("SELECT * FROM funcionario", (err, funcionario) => {
+  //   console.log('funcionario');
+  //   console.log(funcionario);
+  // });
 }
 
 rodaQueries();

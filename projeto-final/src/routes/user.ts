@@ -10,5 +10,5 @@ export const userRoutes = app => {
     .post(wrapAsync(userAPI.register));
 
   app.route('/user/exists/:matricula')
-    .get(wrapAsync(userAPI.checkUserNameTaken));
+    .get(wrapAsync(userAPI.checkUserMatriculaTaken));
 };

@@ -2,6 +2,7 @@ const converterFuncionario = row => ({
   user_id: row.id,
   user_name: row.nome,
   user_email: row.email,
+  user_matricula: row.matricula,
   user_password: row.password
 });
 
@@ -29,11 +30,11 @@ export class FuncionarioDao {
     ));
   }
 
-  findByName(user_name) {
+  findByMatricula(user_matricula) {
 
     return new Promise((resolve, reject) => this._db.query(
-      `SELECT * FROM funcionario WHERE nome = ?`,
-      [user_name],
+      `SELECT * FROM funcionario WHERE matricula = ?`,
+      [user_matricula],
       (err, row) => {
         if (err) {
           console.log(err);

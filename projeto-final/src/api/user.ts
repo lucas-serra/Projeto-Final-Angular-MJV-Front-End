@@ -1,10 +1,12 @@
 import jwt from 'jsonwebtoken';
 import { FuncionarioDao } from '../infra';
+import { Request, response, Response } from 'express';
 
 
-export const login = async (req, res) => {
+export const login = async (req:Request, res:Response) => {
   const { email, senha } = req.body;
-  console.log('####################################');
+  try{
+    console.log('####################################');
   const funcionario = await new FuncionarioDao(req.db).findByEmailAndPassword(email, senha);
   console.log(funcionario);
   if (funcionario) {
@@ -20,15 +22,19 @@ export const login = async (req, res) => {
     console.log('No token generated');
     res.status(401).json({ message: `Authentication failed for employee ${email}` });
   }
+  }catch(e){
+    res.status(401).json({ message: `Authentication failed for employee ${email}` });
+  }
+  
 };
 
-export const register = async (req, res) => {
+export const register = async (req: Request, res: Response) => {
   const funcionario = req.body;
   const funcionarioId = await new FuncionarioDao(req.db).add(funcionario);
   res.status(204).end();
 };
 
-export const checkUserMatriculaTaken = async (req, res) => {
+export const checkUserMatriculaTaken = async (req:Request, res:Response) => {
   const { matricula } = req.params;
   const funcionario = await new FuncionarioDao(req.db).findByMatricula(matricula);
   res.json(!!funcionario);

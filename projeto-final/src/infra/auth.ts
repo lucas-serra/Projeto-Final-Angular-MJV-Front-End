@@ -1,9 +1,10 @@
 import { verify } from 'jsonwebtoken'
 import { promisify } from 'util';
+import { NextFunction, Request, Response } from 'express';
 
 const verifyPromise = promisify(verify);
 
-export default async (req, res, next) => {
+export default async (req:Request, res:Response, next:NextFunction) => {
   const token = req.headers['x-access-token'];
   if (token) {
     try {

@@ -1,24 +1,27 @@
-const converterFuncionario = row => ({
+import { Client } from 'pg';
+import { funcionario } from '../api/funcionario';
+
+const converterFuncionario = (row:funcionario) => ({
   user_id: row.id,
   user_name: row.nome,
   user_email: row.email,
   user_matricula: row.matricula,
-  user_password: row.password
+  user_password: row.senha
 });
 
 
 export class FuncionarioDao {
   private _db: any;
 
-  constructor(db) {
+  constructor(db:Client) {
     this._db = db;
   }
 
-  findByEmailAndPassword(user_email, user_password) {
+  findByEmailAndPassword(user_email:string, user_password:string) {
     return new Promise((resolve, reject) => this._db.query(
       `SELECT * FROM funcionario WHERE email = ? AND senha = ?`,
       [user_email, user_password],
-      (err, row) => {
+      (err:Error, row:funcionario) => {
         if (err) {
           console.log(err);
           return reject('Can`t find employee');
@@ -30,12 +33,12 @@ export class FuncionarioDao {
     ));
   }
 
-  findByMatricula(user_matricula) {
+  findByMatricula(user_matricula:string) {
 
     return new Promise((resolve, reject) => this._db.query(
       `SELECT * FROM funcionario WHERE matricula = ?`,
       [user_matricula],
-      (err, row) => {
+      (err: Error, row) => {
         if (err) {
           console.log(err);
           return reject('Can`t find employee');
@@ -48,7 +51,7 @@ export class FuncionarioDao {
 
   }
 
-  add(funcionario) {
+  add(funcionario: funcionario) {
     return new Promise((resolve, reject) => {
 
       this._db.query(`
@@ -73,7 +76,7 @@ export class FuncionarioDao {
           funcionario.email,
           funcionario.senha
         ],
-        function (err) {
+        function (err:Error) {
           if (err) {
             console.log(err);
             return reject('Can`t register new employee');

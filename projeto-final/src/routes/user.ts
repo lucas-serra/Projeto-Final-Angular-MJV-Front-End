@@ -1,14 +1,12 @@
-import { wrapAsync } from '../infra';
 import { login, register, checkUserMatriculaTaken } from '../api/user';
+import { Router } from 'express';
 
-export const userRoutes = (app:any) => {
+const router = Router();
 
-  app.route('/user/login')
-    .post(wrapAsync(login));
+router.post('/login',login);
 
-  app.route('/user/signup')
-    .post(wrapAsync(register));
+router.post('/signup',register);
 
-  app.route('/user/exists/:matricula')
-    .get(wrapAsync(checkUserMatriculaTaken));
-};
+router.get('/exists/:matricula',checkUserMatriculaTaken);
+
+export default router;

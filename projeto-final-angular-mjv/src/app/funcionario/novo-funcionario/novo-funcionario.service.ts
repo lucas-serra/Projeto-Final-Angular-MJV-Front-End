@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Funcionario } from 'src/app/autenticacao/funcionario/funcionario';
 import { NovoFuncionario } from './novo-funcionario';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NovoFuncionarioService {
+export class NovoFuncionarioService<T> {
 
   constructor(private http: HttpClient) { }
 
@@ -17,16 +18,28 @@ export class NovoFuncionarioService {
   verificaFuncionarioExistente(matricula:string){
     return this.http.get(`http://localhost:3000/user/exists/${matricula}`);
   }
-  listaFuncionarios(){
-
-    return this.http.get<Array<Funcionario>>('http://localhost:3000/user/listarUser');
-    // return [
-    //   {
-    //     nome:'alvaro',
-    //     profissao:'dev java',
-    //     salario: 2500
-    //   }
-    // ];
+  listaFuncionarios(): Observable<T[]> {
+    return this.http.get<T[]>(`http://localhost:3000/user/listarUser`);
   }
 }
 
+@Injectable({
+  providedIn:'root'
+})
+
+export class FuncionariosService extends NovoFuncionarioService<Funcionario> {
+
+constructor(http: HttpClient) {
+  super(http);
+}
+
+
+}
+
+export class NovocadastroFuncionarioService extends NovoFuncionarioService<NovoFuncionario> {
+
+  constructor(http: HttpClient) {
+    super(http);
+  }
+
+}

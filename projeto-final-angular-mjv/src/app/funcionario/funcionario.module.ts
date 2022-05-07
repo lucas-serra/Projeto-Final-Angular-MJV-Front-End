@@ -6,6 +6,7 @@ import { ListaFuncionarioComponent } from './lista-funcionario/lista-funcionario
 import { NovoFuncionarioComponent } from './novo-funcionario/novo-funcionario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensagemModule } from '../componentes/mensagem/mensagem.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,6 +20,7 @@ import { MensagemModule } from '../componentes/mensagem/mensagem.module';
     FuncionarioRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     MensagemModule
   ]
 })

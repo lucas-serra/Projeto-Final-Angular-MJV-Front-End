@@ -8,7 +8,7 @@ import { NovoFuncionarioService } from './novo-funcionario.service';
 })
 export class FuncionarioExisteService {
 
-  constructor(private novoFuncionarioService: NovoFuncionarioService) { }
+  constructor(private novoFuncionarioService: NovoFuncionarioService<any>) { }
 
   funcionarioJaExiste(){
     return (control: AbstractControl) =>{

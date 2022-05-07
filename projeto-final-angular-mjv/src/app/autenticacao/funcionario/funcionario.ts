@@ -1,9 +1,8 @@
-export interface Funcionario {
+export class Funcionario {
   id?:string;
   nome?: string;
   senha?: string;
   matricula?: string;
   profissao?: string;
-  salario?: number;
-  cpf?:string;
-  celular?:number;}
+  email?: string;
+  salario?: number;}

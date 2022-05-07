@@ -17,31 +17,28 @@ export class NovoFuncionarioComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private novoFuncionarioService: NovoFuncionarioService,
-    private funcionarioExistenteService: FuncionarioExisteService,
-    private router: Router) { }
+    private novoFuncionarioService: NovoFuncionarioService<any>,
+    private funcionarioExistenteService: FuncionarioExisteService) { }
 
   ngOnInit(): void {
     this.novoFuncionarioForm = this.formBuilder.group({
       nome: ['',[Validators.required,Validators.minLength(10)]],
       profissao: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
-      cpf: ['',[Validators.required]],
       senha: ['',[Validators.required]],
-      celular: [ ,[Validators.required]],
       salario: ['',[Validators.required]],
-      matricula: [ ,[Validators.required],[this.funcionarioExistenteService.funcionarioJaExiste()]]
+      matricula: [ null,[Validators.required, this.funcionarioExistenteService.funcionarioJaExiste()]]
     })
   }
 
   cadastrar(){
+    console.log(this.novoFuncionarioForm)
     if (this.novoFuncionarioForm.valid) {
-      console.log("teste")
       const novoFuncionario = this.novoFuncionarioForm.getRawValue() as NovoFuncionario;
       this.novoFuncionarioService.cadastraNovoFuncionario(novoFuncionario).subscribe(()=>{
-        this.router.navigate([''])
+
       },
-      (error)=>{
+      (error: any)=>{
         console.log(error);
       }
 

@@ -1,7 +1,17 @@
-<div class="card" style="width: 25rem;">
-  <div class="card-body" *ngFor="let item of users">
-    <h5 class="card-title">Nome: {{item?.nome}}</h5>
-    <p class="card-text">Profissão: {{item?.profissao}}</p>
-    <p class="card-text">Salário: {{item?.salario}}</p>
+
+<div class="row" *ngFor="let item of users">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{item?.nome}}</h5>
+        <p class="card-text">{{item?.profissao}}</p>
+        <a href="#" class="btn btn-primary">{{item?.salario}}</a>
+      </div>
+    </div>
   </div>
+
 </div>
+<a [routerLink]="['']">
+  <i class="fa fa-home fa-2x"></i>
+</a>
+<button class="btn btn-primary btn-block" (click)="rota()">Cadastrar um Funcionário</button>

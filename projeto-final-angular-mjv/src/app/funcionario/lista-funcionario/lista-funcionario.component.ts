@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NovoFuncionarioService } from '../novo-funcionario/novo-funcionario.service';
+import { Router } from '@angular/router';
+import { NovoFuncionario } from '../novo-funcionario/novo-funcionario';
+import { FuncionariosService, NovoFuncionarioService } from '../novo-funcionario/novo-funcionario.service';
 
 @Component({
   selector: 'app-lista-funcionario',
@@ -8,13 +10,21 @@ import { NovoFuncionarioService } from '../novo-funcionario/novo-funcionario.ser
 })
 export class ListaFuncionarioComponent implements OnInit {
 
-  users:any;
-  constructor(private novoFuncionario:NovoFuncionarioService) { }
+  users: Array<NovoFuncionario> = new Array();
+  constructor(private novoFuncionario:FuncionariosService, private router: Router) {   this.getAll }
 
   ngOnInit(): void {
-
-    this.users=this.novoFuncionario.listaFuncionarios();
-
+    this.getAll();
+  }
+  getAll() {
+    this.novoFuncionario.listaFuncionarios().subscribe(resp => {
+      this.users = resp;
+    }, (error): void => {
+      console.log(error)
+    })
   }
 
+  rota() {
+    this.router.navigate(['funcionarios/novo-funcionario']);
+  }
 }

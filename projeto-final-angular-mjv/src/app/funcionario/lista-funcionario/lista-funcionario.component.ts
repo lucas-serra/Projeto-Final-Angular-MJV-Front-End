@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NovoFuncionarioService } from '../novo-funcionario/novo-funcionario.service';
 
 @Component({
   selector: 'app-lista-funcionario',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaFuncionarioComponent implements OnInit {
 
-  constructor() { }
+  users:any;
+  constructor(private novoFuncionario:NovoFuncionarioService) { }
 
   ngOnInit(): void {
+
+    this.users=this.novoFuncionario.listaFuncionarios();
+
   }
 
 }

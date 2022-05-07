@@ -15,11 +15,12 @@ export class AutenticacaoService {
       senha: password
     },
     {observe:'response'}
-    ).pipe(
-      tap((response)=>{
-        const authToken = response.headers.get('x-acess-token')?? '';
-        this.funcionarioService.salvaToken(authToken);
-      })
     )
+  //   // .pipe(
+  //   //   tap((response)=>{
+  //   //     const authToken = response.headers.get('x-acess-token')?? '';
+  //   //     this.funcionarioService.salvaToken(authToken);
+  //   //   })
+  //   // )
   }
 }

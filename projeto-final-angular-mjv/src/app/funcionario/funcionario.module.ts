@@ -12,7 +12,7 @@ import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 @NgModule({
   declarations: [
     ListaFuncionarioComponent,
-    NovoFuncionarioComponent
+    NovoFuncionarioComponent,
   ],
   imports: [
     CommonModule,

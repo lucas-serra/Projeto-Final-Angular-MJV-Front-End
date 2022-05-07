@@ -9,11 +9,11 @@ import { FuncionarioService } from 'src/app/autenticacao/funcionario/funcionario
 })
 export class HeaderComponent {
 
-  funcionario$ = this.funcionarioService.retornaFuncionario()
+  // funcionario$ = this.funcionarioService.retornaFuncionario()
   constructor(private funcionarioService: FuncionarioService, private router: Router) { }
 
   logout(){
-    this.funcionarioService.logout();
+    //this.funcionarioService.logout();
     this.router.navigate(['']);
   }
 }

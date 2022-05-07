@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.autenticar(this.userEmail,this.password).subscribe(()=>{
       this.router.navigate(['funcionarios']);
-    },(error)=>{
+    }),(error:Error)=>{
       alert('Usuário ou senha incorreto');
       console.log(error);
     }
-    );
+  //   );
   }
 
 }

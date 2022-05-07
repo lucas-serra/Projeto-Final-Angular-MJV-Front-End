@@ -14,10 +14,10 @@ export class NovoFuncionarioComponent implements OnInit {
 
   novoFuncionarioForm!: FormGroup;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private novoFuncionarioService: NovoFuncionarioService<any>,
+    private router: Router,
     private funcionarioExistenteService: FuncionarioExisteService) { }
 
   ngOnInit(): void {
@@ -45,6 +45,10 @@ export class NovoFuncionarioComponent implements OnInit {
       );
     }
 
+  }
+
+  rotaLista(){
+    this.router.navigate(['funcionarios']);
   }
 
   textCenter :string = 'Cadastro de Funcionário';

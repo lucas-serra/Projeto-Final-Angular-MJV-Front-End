@@ -7,6 +7,8 @@ import { NovoFuncionarioComponent } from './novo-funcionario/novo-funcionario.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 import { RouterModule } from '@angular/router';
+import { HeaderModule } from '../componentes/header/header.module';
+import { HeaderComponent } from '../componentes/header/header.component';
 
 
 
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    HeaderModule,
     MensagemModule
   ]
 })

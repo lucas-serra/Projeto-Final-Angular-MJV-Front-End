@@ -27,4 +27,10 @@ export class ListaFuncionarioComponent implements OnInit {
   rota() {
     this.router.navigate(['funcionarios/novo-funcionario']);
   }
+
+  // remover(id:string){
+
+  //   const novoId = Number.parseInt(id);
+  //   this.novoFuncionario.removeFuncionario(novoId)
+  // }
 }

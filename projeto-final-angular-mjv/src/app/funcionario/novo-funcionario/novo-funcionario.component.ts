@@ -36,7 +36,7 @@ export class NovoFuncionarioComponent implements OnInit {
     if (this.novoFuncionarioForm.valid) {
       const novoFuncionario = this.novoFuncionarioForm.getRawValue() as NovoFuncionario;
       this.novoFuncionarioService.cadastraNovoFuncionario(novoFuncionario).subscribe(()=>{
-
+        this.novoFuncionarioForm.reset();
       },
       (error: any)=>{
         console.log(error);

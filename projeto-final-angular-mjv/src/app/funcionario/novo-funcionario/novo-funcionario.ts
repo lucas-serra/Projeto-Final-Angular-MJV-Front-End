@@ -1,9 +1,9 @@
 export class NovoFuncionario {
-  id?:string;
+  id?:number;
   nome?: string;
   email?:string
   senha?: string;
-  matricula?: string;
+  matricula?: number;
   profissao?: string;
   salario?: number;
 }

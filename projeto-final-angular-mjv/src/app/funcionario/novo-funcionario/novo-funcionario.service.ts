@@ -13,17 +13,20 @@ export class NovoFuncionarioService<T> {
 
   cadastraNovoFuncionario(novoFuncionario:NovoFuncionario){
     return this.http.post('http://localhost:3000/user/signup', novoFuncionario);
-    //mudar para this.http.post('http://localhost:3000/funcionario/signup', novoFuncionario);
   }
+
   verificaFuncionarioExistente(matricula:string){
     return this.http.get(`http://localhost:3000/user/exists/${matricula}`);
   }
+
   listaFuncionarios(): Observable<T[]> {
     return this.http.get<T[]>(`http://localhost:3000/user/listarUser`);
   }
-  removeFuncionario(id:string){
+
+  removeFuncionario(id:number){
     return this.http.delete(`http://localhost:3000/user/delete/${id}`)
   }
+
 }
 
 @Injectable({

@@ -29,7 +29,7 @@ export class ListaFuncionarioComponent implements OnInit {
     this.router.navigate(['funcionarios/novo-funcionario']);
   }
 
-  remover(id:string){
+  remover(id:number){
 
     this.novoFuncionario.removeFuncionario(id).subscribe(resp=>{
       this.usuario = resp;

@@ -1,8 +1,8 @@
 export class Funcionario {
-  id?:string;
+  id?:number;
   nome?: string;
   senha?: string;
-  matricula?: string;
+  matricula?: number;
   profissao?: string;
   email?: string;
   salario?: number;}

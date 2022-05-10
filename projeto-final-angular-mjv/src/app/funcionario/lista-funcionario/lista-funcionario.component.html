@@ -9,13 +9,16 @@
   <div class="col-md-4" *ngFor="let item of users">
     <div class="card">
       <div class="card-body">
+
         <h5 class="card-title">Nome: {{item?.nome}}</h5>
+
         <p class="card-text">Profissão: {{item?.profissao}}</p>
+
         <p class="card-text">Matrícula: {{item?.matricula}}</p>
 
-        <p class="card-text">email: {{item?.email}}</p>
+        <p class="card-text">Email: {{item?.email}}</p>
+
         <button class="btn btn-danger" (click)="remover(item.id!)">Remover</button>
-        <!-- <button class="btn btn-danger" >Remover</button> -->
 
       </div>
     </div>

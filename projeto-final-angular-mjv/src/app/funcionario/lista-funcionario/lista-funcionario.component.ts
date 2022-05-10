@@ -11,6 +11,7 @@ import { FuncionariosService, NovoFuncionarioService } from '../novo-funcionario
 export class ListaFuncionarioComponent implements OnInit {
 
   users: Array<NovoFuncionario> = new Array();
+  usuario: NovoFuncionario = new NovoFuncionario();
   constructor(private novoFuncionario:FuncionariosService, private router: Router) {   this.getAll }
 
   ngOnInit(): void {
@@ -28,9 +29,13 @@ export class ListaFuncionarioComponent implements OnInit {
     this.router.navigate(['funcionarios/novo-funcionario']);
   }
 
-  // remover(id:string){
+  remover(id:string){
 
-  //   const novoId = Number.parseInt(id);
-  //   this.novoFuncionario.removeFuncionario(novoId)
-  // }
+    this.novoFuncionario.removeFuncionario(id).subscribe(resp=>{
+      this.usuario = resp;
+      return this.getAll();
+    }, (error): void=>{
+      console.log(error)
+    });
+  }
 }

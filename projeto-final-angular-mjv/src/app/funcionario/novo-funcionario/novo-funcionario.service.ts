@@ -21,9 +21,9 @@ export class NovoFuncionarioService<T> {
   listaFuncionarios(): Observable<T[]> {
     return this.http.get<T[]>(`http://localhost:3000/user/listarUser`);
   }
-  // removeFuncionario(id:number){
-  //   return this.http.delete(`http://localhost:3000/user/delete/:${id}`)
-  // }
+  removeFuncionario(id:string){
+    return this.http.delete(`http://localhost:3000/user/delete/${id}`)
+  }
 }
 
 @Injectable({

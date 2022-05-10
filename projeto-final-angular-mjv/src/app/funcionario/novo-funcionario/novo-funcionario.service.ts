@@ -15,7 +15,7 @@ export class NovoFuncionarioService<T> {
     return this.http.post('http://localhost:3000/user/signup', novoFuncionario);
   }
 
-  verificaFuncionarioExistente(matricula:string){
+  verificaFuncionarioExistente(matricula:number){
     return this.http.get(`http://localhost:3000/user/exists/${matricula}`);
   }
 
